@@ -12,7 +12,7 @@ const Footer = () => {
             <span className="text-muted">© 2025 BridgeByte. All rights reserved.</span>
           </div>
         </div>
-        <div className="text-right text-muted">
+        <div className="text-center sm:text-right text-muted">
           Made with ♥ • <a href="#top">Back to top ↑</a>
         </div>
       </div>

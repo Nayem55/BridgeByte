@@ -16,7 +16,7 @@ const Hero = () => {
         </div>
         <div className="flex justify-center md:justify-end">
           <Parallax speed={-5}>
-            <img className="w-[340px] max-w-[70vw] drop-shadow-[0_30px_45px_rgba(31,182,255,0.18)]" src="bridgebyte-logo.svg" alt="BridgeByte mark" />
+            <img className="w-[340px] max-w-[70vw] drop-shadow-[0_30px_45px_rgba(31,182,255,0.18)]" src="https://i.ibb.co.com/3YNpscpW/Screenshot-2025-11-08-150049.png" alt="BridgeByte mark" />
           </Parallax>
         </div>
       </div>
