@@ -1,7 +1,13 @@
 // src/Components/Tally.js
 import React from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 const Tally = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   const services = [
     {
       title: "TallyPrime Licensing",
@@ -43,78 +49,154 @@ const Tally = () => {
   ];
 
   return (
-    <section id="tally" className="py-[clamp(2.5rem,6vw,4rem)] scroll-mt-[80px]">
+    <section id="tally" className="py-[clamp(2.5rem,6vw,4rem)] scroll-mt-[80px]" ref={ref}>
       <div className="max-w-[1100px] w-[92vw] mx-auto">
         {/* Header */}
-        <div className="text-center mb-10">
-          <h2 className="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-white mb-3">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-10"
+        >
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-white mb-3"
+          >
             Tally Licenses & Customization
-          </h2>
-          <p className="text-muted max-w-3xl mx-auto leading-relaxed">
-            Official TallyPrime partner. From fresh licensing to advanced customizations — we make Tally <em className="text-accent2">fit your business perfectly</em>.
-          </p>
-        </div>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-muted max-w-3xl mx-auto leading-relaxed"
+          >
+            Official TallyPrime partner. From fresh licensing to advanced customizations — we make Tally{' '}
+            <em className="text-accent2">fit your business perfectly</em>.
+          </motion.p>
+        </motion.div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           {services.map((service, i) => (
-            <div
+            <motion.div
               key={i}
-              className="group relative bg-gradient-to-b from-glass to-glass/50 backdrop-blur-xl border border-glass-border rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-glow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                duration: 0.5,
+                delay: 0.3 + i * 0.1,
+                ease: "easeOut",
+              }}
+              whileHover={{
+                y: -8,
+                scale: 1.02,
+                transition: { duration: 0.3, ease: "easeOut" },
+              }}
+              className="group relative bg-gradient-to-b from-glass to-glass/50 backdrop-blur-xl border border-glass-border rounded-2xl p-6 cursor-default"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-gradient-to-br from-accent1/20 to-accent2/20 text-accent1 group-hover:scale-110 transition-transform">
+                <motion.div
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  transition={{ duration: 0.3 }}
+                  className="p-2 rounded-lg bg-gradient-to-br from-accent1/20 to-accent2/20 text-accent1"
+                >
                   {service.icon}
-                </div>
+                </motion.div>
                 <h3 className="text-lg font-bold text-white">{service.title}</h3>
               </div>
               <p className="text-muted-light text-sm leading-relaxed">{service.desc}</p>
 
-              {/* Subtle Hover Glow */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent1/10 to-accent2/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10" />
-            </div>
+              {/* Hover Glow */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent1/10 to-accent2/10 blur-xl -z-10"
+              />
+            </motion.div>
           ))}
         </div>
 
         {/* CTA Banner */}
-        <div className="bg-gradient-to-r from-[rgba(138,63,252,0.25)] to-[rgba(31,182,255,0.25)] border border-glass-border rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 backdrop-blur-xl">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+          className="bg-gradient-to-r from-[rgba(138,63,252,0.25)] to-[rgba(31,182,255,0.25)] border border-glass-border rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 backdrop-blur-xl"
+        >
           <div className="text-left">
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
+            <motion.h3
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              className="text-xl md:text-2xl font-bold text-white mb-2"
+            >
               Migrating to TallyPrime? Need smarter reports?
-            </h3>
-            <p className="text-muted">
+            </motion.h3>
+            <motion.p
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              className="text-muted"
+            >
               Get a <strong>free data audit + migration plan</strong> in 24 hours. No strings attached.
-            </p>
+            </motion.p>
           </div>
-          <a
+
+          <motion.a
             href="#contact"
-            className="px-6 py-3 rounded-xl bg-gradient-to-br from-accent1 to-accent2 text-white font-bold shadow-[0_10px_30px_rgba(31,182,255,0.25)] hover:shadow-[0_15px_40px_rgba(31,182,255,0.35)] transition-all duration-300 whitespace-nowrap"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            animate={{
+              boxShadow: [
+                "0 10px 30px rgba(31,182,255,0.25)",
+                "0 15px 40px rgba(31,182,255,0.35)",
+                "0 10px 30px rgba(31,182,255,0.25)",
+              ],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="px-6 py-3 rounded-xl bg-gradient-to-br from-accent1 to-accent2 text-white font-bold shadow-[0_10px_30px_rgba(31,182,255,0.25)] whitespace-nowrap"
           >
             Talk to Tally Expert
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
 
         {/* Trust Badges */}
-        <div className="mt-10 flex flex-wrap justify-center items-center gap-6 text-muted-light text-sm">
-          <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            <span>Official Tally Solutions Partner</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            <span>500+ Custom Reports Delivered</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            <span>24-Hour Migration Planning</span>
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.9 }}
+          className="mt-10 flex flex-wrap justify-center items-center gap-6 text-muted-light text-sm"
+        >
+          {[
+            "Official Tally Solutions Partner",
+            "500+ Custom Reports Delivered",
+            "24-Hour Migration Planning",
+          ].map((text, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.4, delay: 1 + i * 0.1 }}
+              className="flex items-center gap-2"
+            >
+              <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <span>{text}</span>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
