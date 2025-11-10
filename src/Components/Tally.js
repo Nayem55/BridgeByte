@@ -94,7 +94,7 @@ const Tally = () => {
                 scale: 1.02,
                 transition: { duration: 0.3, ease: "easeOut" },
               }}
-              className="group relative bg-gradient-to-b from-glass to-glass/50 backdrop-blur-xl border border-glass-border rounded-2xl p-6 cursor-default"
+              className="group relative bg-[#090513] backdrop-blur-xl border border-glass-border rounded-2xl p-6 cursor-default"
             >
               <div className="flex items-center gap-3 mb-4">
                 <motion.div
@@ -104,9 +104,9 @@ const Tally = () => {
                 >
                   {service.icon}
                 </motion.div>
-                <h3 className="text-lg font-bold text-white">{service.title}</h3>
+                <h3 className="text-lg font-bold text-[#312FF3]">{service.title}</h3>
               </div>
-              <p className="text-muted-light text-sm leading-relaxed">{service.desc}</p>
+              <p className="text-white text-sm leading-relaxed">{service.desc}</p>
 
               {/* Hover Glow */}
               <motion.div

@@ -15,8 +15,8 @@ function App() {
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePos((prev) => ({
-        x: prev.x + (e.clientX - prev.x) * 0.1,
-        y: prev.y + (e.clientY - prev.y) * 0.1,
+        x: prev.x + (e.clientX - prev.x),
+        y: prev.y + (e.clientY - prev.y),
       }));
     };
     window.addEventListener("mousemove", handleMouseMove);

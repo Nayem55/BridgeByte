@@ -1,13 +1,6 @@
 // src/components/ServicesCardElite.tsx
 import React from "react";
 
-const Icon = ({ children }: { children: React.ReactNode }) => (
-  <div className="shrink-0 mt-1 text-[#8A3FFC]">{children}</div>
-);
-const IconR = ({ children }: { children: React.ReactNode }) => (
-  <div className="shrink-0 mt-1 text-[#1FB6FF]">{children}</div>
-);
-
 /* === SVG Icons === */
 const SvgCode = () => (
   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -69,7 +62,44 @@ const SvgBridge = () => (
   </svg>
 );
 
+/* === Reusable Service Item === */
+const ServiceItem = ({ Icon, title, desc, accent }: { Icon: React.FC; title: string; desc: string; accent: "left" | "right" }) => {
+  const isLeft = accent === "left";
+  return (
+    <div className="group flex items-start gap-5 transform transition-all duration-300 hover:translate-y-[-4px]">
+      <div className={`shrink-0 mt-1 ${isLeft ? "text-[#8A3FFC]" : "text-[#1FB6FF]"}`}>
+        <div className="p-2 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 group-hover:scale-110 transition-transform">
+          <Icon />
+        </div>
+      </div>
+      <div className="flex-1">
+        <h3 className="text-white font-bold text-xl mb-1.5 group-hover:text-white transition-colors">
+          {title}
+        </h3>
+        <p className="text-white/70 text-base leading-relaxed group-hover:text-white/90 transition-colors">
+          {desc}
+        </p>
+      </div>
+    </div>
+  );
+};
+
 export default function ServicesCardElite() {
+  const services = [
+    // LEFT COLUMN
+    [
+      { Icon: SvgCode, title: "Custom Software Development", desc: "Web/desktop apps that mirror your processes. APIs, dashboards, automations." },
+      { Icon: SvgInventory, title: "Inventory Management", desc: "Real-time stock, batches, serials, reorder alerts, purchase-to-sales flow." },
+      { Icon: SvgCCTV, title: "CCTV & Hardware Support", desc: "Surveillance setup, AMC, network design, on-site hardware repairs." },
+    ],
+    // RIGHT COLUMN
+    [
+      { Icon: SvgPOS, title: "POS & Billing", desc: "Barcode-ready POS with fast billing, role-based access, and tax-ready reports." },
+      { Icon: SvgHandshake, title: "CRM / SRM", desc: "Customer & supplier portals, lead tracking, follow-ups, contract management." },
+      { Icon: SvgServer, title: "Windows Server & Deployment", desc: "AD, file shares, backup, virtualization, VPN, and domain hardening." },
+    ],
+  ];
+
   return (
     <section className="relative overflow-hidden py-[clamp(3rem,8vw,6rem)]">
       {/* Cosmic Background */}
@@ -119,33 +149,20 @@ export default function ServicesCardElite() {
 
             {/* Content Grid */}
             <div className="relative grid md:grid-cols-2 gap-12">
-              {/* LEFT */}
+              {/* LEFT COLUMN */}
               <div className="space-y-11">
-                {[
-                  { Icon: SvgCode, title: "Custom Software Development", desc: "Web/desktop apps that mirror your processes. APIs, dashboards, automations." },
-                  { Icon: SvgPOS, title: "POS & Billing", desc: "Barcode-ready POS with fast billing, role-based access, and tax-ready reports." },
-                  { Icon: SvgCCTV, title: "CCTV & Hardware Support", desc: "Surveillance setup, AMC, network design, on-site hardware repairs." },
-                ].map((item, i) => (
+                {services[0].map((item, i) => (
                   <ServiceItem key={i} Icon={item.Icon} title={item.title} desc={item.desc} accent="left" />
                 ))}
               </div>
 
-              {/* RIGHT */}
+              {/* RIGHT COLUMN */}
               <div className="space-y-11">
-                {[
-                  { Icon: SvgPOS, title: "POS & Billing", desc: "Barcode-ready POS with fast-based access, and tax-ready reports." },
-                  { Icon: SvgInventory, title: "Inventory Management", desc: "Real-time stock, batches, serials, reorder alerts, purchase-to-sales flow." },
-                  { Icon: SvgServer, title: "Windows Server & Deployment", desc: "AD, file shares, backup, virtualization, VPN, and domain hardening." },
-                ].map((item, i) => (
+                {services[1].map((item, i) => (
                   <ServiceItem key={i} Icon={item.Icon} title={item.title} desc={item.desc} accent="right" />
                 ))}
               </div>
             </div>
-
-            {/* Bridge Icon */}
-            {/* <div className="absolute left-1/2 -translate-x-1/2 bottom-10 text-[#8A3FFC] opacity-70 group-hover:opacity-100 transition-opacity">
-              <SvgBridge />
-            </div> */}
 
             {/* Diamond Accent */}
             <div className="absolute right-8 bottom-8 w-6 h-6 rotate-45 bg-gradient-to-br from-white/80 to-white/30 rounded-sm shadow-lg blur-[0.5px]" />
@@ -174,25 +191,3 @@ export default function ServicesCardElite() {
     </section>
   );
 }
-
-/* === Reusable Service Item with Hover Magic === */
-const ServiceItem = ({ Icon, title, desc, accent }: any) => {
-  const isLeft = accent === "left";
-  return (
-    <div className="group flex items-start gap-5 transform transition-all duration-300 hover:translate-y-[-4px]">
-      <div className={`shrink-0 mt-1 ${isLeft ? "text-[#8A3FFC]" : "text-[#1FB6FF]"}`}>
-        <div className="p-2 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 group-hover:scale-110 transition-transform">
-          <Icon />
-        </div>
-      </div>
-      <div className="flex-1">
-        <h3 className="text-white font-bold text-xl mb-1.5 group-hover:text-white transition-colors">
-          {title}
-        </h3>
-        <p className="text-white/70 text-base leading-relaxed group-hover:text-white/90 transition-colors">
-          {desc}
-        </p>
-      </div>
-    </div>
-  );
-};
