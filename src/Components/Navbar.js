@@ -1,14 +1,33 @@
 // src/components/Navbar.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+
+  // Track active section on scroll
+  useEffect(() => {
+    const sections = ["services", "tally", "why", "packages", "contact"];
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 150;
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el && el.offsetTop <= scrollPos && el.offsetTop + el.offsetHeight > scrollPos) {
+          setActiveSection(section);
+          break;
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { href: "#services", label: "Solutions" },
     { href: "#tally", label: "Tally" },
     { href: "#why", label: "Why Us" },
+    { href: "#packages", label: "Packages" }, // NEW
     { href: "#contact", label: "Get Quote", cta: true },
   ];
 
@@ -36,13 +55,23 @@ const Navbar = () => {
               <a
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 rounded-xl font-semibold text-sm tracking-wide transition-all duration-300 ${
+                className={`px-4 py-2 rounded-xl font-semibold text-sm tracking-wide transition-all duration-300 relative ${
                   link.cta
                     ? "bg-gradient-to-br from-accent1 to-accent2 text-white shadow-[0_10px_30px_rgba(31,182,255,0.3)] hover:shadow-[0_15px_40px_rgba(31,182,255,0.4)] hover:scale-105"
+                    : activeSection === link.href.slice(1)
+                    ? "text-accent2 bg-white/10"
                     : "text-white/90 hover:text-white hover:bg-white/10"
                 }`}
               >
                 {link.label}
+                {/* Active Indicator */}
+                {!link.cta && activeSection === link.href.slice(1) && (
+                  <motion.div
+                    layoutId="navbar-active"
+                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent1/20 to-accent2/20 -z-10"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
               </a>
             ))}
           </div>
@@ -115,6 +144,8 @@ const Navbar = () => {
                     className={`block w-full px-5 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 ${
                       link.cta
                         ? "bg-gradient-to-br from-accent1 to-accent2 text-white shadow-lg hover:shadow-xl hover:scale-[1.02]"
+                        : activeSection === link.href.slice(1)
+                        ? "text-accent2 bg-white/15"
                         : "text-white/90 hover:text-white hover:bg-white/10"
                     }`}
                   >
