@@ -8,6 +8,7 @@ import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
 import Tally from "./Components/Tally";
 import "./App.css";
+import SupportPackages from "./Components/SupportPackages";
 
 function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -35,7 +36,7 @@ function App() {
             }px)`,
           }}
         >
-          <div className="w-[300px] h-[300px] rounded-full bg-purple-400/20 blur-3xl"></div>
+          {/* <div className="w-[300px] h-[300px] rounded-full bg-purple-400/20 blur-3xl"></div> */}
         </div>
 
         {/* Main Content */}
@@ -45,6 +46,7 @@ function App() {
           <Services />
           <Tally />
           <WhyUs />
+          <SupportPackages/>
           <Contact />
           <Footer />
         </div>
