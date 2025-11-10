@@ -3,7 +3,7 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 backdrop-saturate-[180%] backdrop-blur-[10px] bg-gradient-to-b from-[rgba(15,11,43,0.92)] to-[rgba(15,11,43,0.6)] border-b border-[rgba(255,255,255,0.06)]">
       <div className="max-w-[1100px] w-[92vw] mx-auto flex items-center justify-between py-[0.8rem] gap-[1rem]">
         <div className="flex items-center gap-[0.7rem]">
-          <img src="https://i.ibb.co.com/3YNpscpW/Screenshot-2025-11-08-150049.png" alt="BridgeByte logo" className="w-11 rounded-lg" />
+          <img src="https://i.ibb.co.com/HLBxP2Wv/Screenshot-2025-11-08-150049-removebg-preview.png" alt="BridgeByte logo" className="w-11 rounded-lg" />
           <strong className="tracking-[0.2px] font-bold text-[1.05rem]">BridgeByte</strong>
         </div>
         <div className="hidden md:flex items-center">

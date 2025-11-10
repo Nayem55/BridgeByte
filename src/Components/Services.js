@@ -99,7 +99,7 @@ const ServiceItem = ({
 }) => {
   const isLeft = accent === "left";
   return (
-    <div className="group flex items-start gap-5 transform transition-all duration-300 hover:translate-y-[-6px] hover:shadow-2xl p-4">
+    <div className="group flex items-start gap-5 transform transition-all duration-300 hover:translate-y-[-6px] hover:shadow-2xl sm:p-4">
       <div
         className={`shrink-0 mt-1 ${
           isLeft ? "text-[#8A3FFC]" : "text-[#1FB6FF]"
@@ -183,7 +183,7 @@ export default function ServicesCardElite() {
           <div className="absolute -inset-2 bg-gradient-to-r from-[#8A3FFC]/25 via-[#1FB6FF]/25 to-[#8A3FFC]/25 rounded-[48px] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
           {/* Main Card */}
-          <div className="relative rounded-[48px] p-10 md:p-16 bg-gradient-to-br from-[#1a0b3d]/98 via-[#2d1b69]/95 to-[#1a0b3d]/98 backdrop-blur-3xl border border-white/15 shadow-3xl overflow-hidden">
+          <div className="relative rounded-[48px] p-6 md:p-16 bg-gradient-to-br from-[#1a0b3d]/98 via-[#2d1b69]/95 to-[#1a0b3d]/98 backdrop-blur-3xl border border-white/15 shadow-3xl overflow-hidden">
             {/* Animated Orbs */}
             <div className="pointer-events-none absolute inset-0 opacity-60">
               <div className="absolute top-0 -left-40 w-96 h-96 bg-gradient-conic from-[#8A3FFC]/50 via-[#1FB6FF]/40 to-transparent rounded-full blur-3xl animate-pulse" />
@@ -257,7 +257,7 @@ export default function ServicesCardElite() {
             </div>
 
             {/* Diamond Accent */}
-            <div className="absolute right-10 bottom-10 w-8 h-8 rotate-45 bg-gradient-to-br from-white/90 to-white/40 rounded-sm shadow-2xl blur-[0.5px]" />
+            <div className="sm:absolute right-10 bottom-10 w-8 h-8 rotate-45 bg-gradient-to-br from-white/90 to-white/40 rounded-sm shadow-2xl blur-[0.5px]" />
           </div>
         </div>
       </div>
