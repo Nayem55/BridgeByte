@@ -99,7 +99,7 @@ const ServiceItem = ({
 }) => {
   const isLeft = accent === "left";
   return (
-    <div className="group flex items-start gap-5 transform transition-all duration-300 hover:translate-y-[-6px] hover:shadow-2xl">
+    <div className="group flex items-start gap-5 transform transition-all duration-300 hover:translate-y-[-6px] hover:shadow-2xl p-4">
       <div
         className={`shrink-0 mt-1 ${
           isLeft ? "text-[#8A3FFC]" : "text-[#1FB6FF]"
@@ -131,9 +131,9 @@ export default function ServicesCardElite() {
         desc: "Stop the Chaos: Run your entire company (HR, Finance, Inventory, Sales) from one simple platform. Get rid of messy spreadsheets and ensure every department works with the exact same, accurate information.",
       },
       {
-        Icon: SvgInventory,
-        title: "Inventory & Warehouse Management",
-        desc: "Never Lose Track of Stock: Get real-time visibility into everything you own, in every warehouse. Our system automatically tells you what to reorder, helping you eliminate stockouts and wasted inventory.",
+        Icon: SvgFactory,
+        title: "Manufacturing & Production",
+        desc: "Control Your Factory Floor: Easily track raw materials, monitor exactly what is being built right now, and calculate your production costs accurately. You gain the power to optimize your entire assembly line and stop wasting money.",
       },
       {
         Icon: SvgPOS,
@@ -144,9 +144,9 @@ export default function ServicesCardElite() {
     // RIGHT COLUMN
     [
       {
-        Icon: SvgFactory,
-        title: "Manufacturing & Production",
-        desc: "Control Your Factory Floor: Easily track raw materials, monitor exactly what is being built right now, and calculate your production costs accurately. You gain the power to optimize your entire assembly line and stop wasting money.",
+        Icon: SvgInventory,
+        title: "Inventory & Warehouse Management",
+        desc: "Never Lose Track of Stock: Get real-time visibility into everything you own, in every warehouse. Our system automatically tells you what to reorder, helping you eliminate stockouts and wasted inventory.",
       },
       {
         Icon: SvgCRM,
