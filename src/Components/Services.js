@@ -167,7 +167,7 @@ export default function ServicesCardElite() {
   ];
 
   return (
-    <section className="relative overflow-hidden py-[clamp(3rem,8vw,6rem)]">
+    <section id="services" className="relative overflow-hidden py-[clamp(3rem,8vw,6rem)]">
       {/* Cosmic Background */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_160%_80%_at_50%_-20%,#1a0b3d_0%,#110827_40%,#0b0718_70%,#0a0615_100%)]" />
 

@@ -82,7 +82,7 @@ const WhyUs = () => {
   ];
 
   return (
-    <section className="relative py-[clamp(3rem,7vw,5rem)] scroll-mt-[80px] overflow-hidden bg-gradient-to-b from-[#0F0B2B] via-[#1C1750] to-[#0F0B2B]">
+    <section id="why" className="relative py-[clamp(3rem,7vw,5rem)] scroll-mt-[80px] overflow-hidden bg-gradient-to-b from-[#0F0B2B] via-[#1C1750] to-[#0F0B2B]">
       {/* ---- Background ---- */}
       {!isMobile && (
         <Parallax speed={-6} className="absolute inset-0 pointer-events-none">
