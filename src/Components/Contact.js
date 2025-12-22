@@ -114,7 +114,7 @@ Looking forward to your response!
           <div className="col-span-12 lg:col-span-5 bg-gradient-to-b from-[rgba(138,63,252,0.12)] to-[rgba(31,182,255,0.10)] border border-[rgba(255,255,255,0.08)] rounded-[1rem] p-[1.1rem] backdrop-blur-xl">
             <h3 className="text-lg font-bold text-white mb-2">Contact</h3>
             <p className="text-white/90 leading-relaxed">
-              Phone: +880 1958-644062
+              Phone: +8801980284861
               <br />
               Email: hello@bridgebyte.com
             </p>
