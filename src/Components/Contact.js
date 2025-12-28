@@ -116,7 +116,7 @@ Looking forward to your response!
             <p className="text-white/90 leading-relaxed">
               Phone: +8801980284861
               <br />
-              Email: hello@bridgebyte.com
+              Email: bridgebyte.bd@gmail.com
             </p>
             <p className="text-muted mt-1">Location: Mohammadpur, Dhaka, Bangladesh</p>
 
